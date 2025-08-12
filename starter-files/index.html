@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!This Block of Code>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Coiny&family=Sono&display=swap"
+      rel="stylesheet"
+    />
+    <!Must Place before my own css file>
+
+    <link href="style.css" rel="stylesheet" />
+    <title>Mythbuster</title>
+  </head>
+  <body>
+    <header>
+      <img src="logo.png" height="65" width="65" alt="This is a Logo" />
+      <h1>Real or Fake?</h1>
+      <button>Create a Post</button>
+    </header>
+
+    <form>
+      <input type="text" placeholder="Share a Myth..." />
+      <span>200</span>
+      <input type="text" placeholder="Source..." />
+      <select>
+        <option value="">Choose one:</option>
+        <option value="Technology">Technology</option>
+        <option value="Science">Science</option>
+        <option value="Finance">Finance</option>
+        <option value="Society">Society</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Health">Health</option>
+        <option value="History">History</option>
+        <option value="News">News</option>
+      </select>
+    </form>
+
+    <main>
+      <aside>
+        <ul>
+          <li>
+            <button>All</button>
+          </li>
+          <li><button>Technology</button></li>
+          <li><button>Science</button></li>
+          <li><button>Finance</button></li>
+          <li><button>Society</button></li>
+          <li><button>Entertainment</button></li>
+          <li><button>Health</button></li>
+          <li><button>History</button></li>
+          <li><button>News</button></li>
+        </ul>
+      </aside>
+
+      <section>
+        <ul>
+          <li>
+            <p class="fact">
+              This is a Fact
+              <a href="https://www.google.com" target="_blank">(Source)</a>
+              <span class="category">#Tag#</span>
+            </p>
+
+            <div>
+              <button>👍<strong>24</strong></button>
+              <button>🤯<strong>9</strong></button>
+              <button>⛔️<strong>4</strong></button>
+            </div>
+          </li>
+          <li>
+            <p class="fact">
+              This is a Fact
+              <a href="https://www.google.com" target="_blank">(Source)</a>
+              <span class="category">#Tag#</span>
+            </p>
+
+            <div>
+              <button>👍<strong>11</strong></button>
+              <button>🤯<strong>2</strong></button>
+              <button>⛔️<strong>0</strong></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <p class="info">*this is an educational project made by Debrup Saha</p>
+      </section>
+    </main>
+  </body>
+</html>
