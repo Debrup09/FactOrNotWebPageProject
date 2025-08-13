@@ -143,7 +143,7 @@ function isValidUrl(string) {
 
 function NewFactForm({ setFact, setShowForm }) {
   const [text, setText] = useState("");
-  const [source, setSource] = useState("http://example.com");
+  const [source, setSource] = useState("");
   const [category, setCategory] = useState("");
   const textLength = text.length;
   const [isUploading, setIsUploading] = useState(false);
@@ -258,27 +258,31 @@ function FactList({ fact, setFact }) {
 
 function Fact({ fact, setFact }) {
   const [isUpdating, setIsUpdating] = useState(false);
+  const isDisputed =
+    fact.votesInteresting + fact.votesMindblowing < fact.votesFalse;
 
-  async function handleVote() {
+  async function handleVote(columnName) {
+    setIsUpdating(true);
     const { data: updatedFact, error } = await supabase
       .from("facts")
-      .update({ votesInteresting: fact.votesInteresting + 1 })
+      .update({ [columnName]: fact[columnName] + 1 })
       .eq("id", fact.id)
       .select();
     setIsUpdating(false);
 
-    console.log(updatedFact);
-
     if (!error) {
-      setFact((fact) =>
-        fact.map((f) => (f.id === fact.id ? updatedFact[0] : f))
-      );
+      if (updatedFact && updatedFact.length > 0) {
+        setFact((facts) =>
+          facts.map((f) => (f.id === fact.id ? updatedFact[0] : f))
+        );
+      }
     }
   }
 
   return (
     <li className="fact">
       <p>
+        {isDisputed ? <span className="disputed">[NOT-A-MYTH] </span> : null}
         {fact.text}
         <a className="links" href={fact.source} target="_blank">
           (Source)
@@ -296,11 +300,21 @@ function Fact({ fact, setFact }) {
       </span>
 
       <div className="reactions">
-        <button onClick={handleVote} disabled={isUpdating}>
+        <button
+          onClick={() => handleVote("votesInteresting")}
+          disabled={isUpdating}
+        >
           👍 {fact.votesInteresting}
         </button>
-        <button>🤯 {fact.votesMindblowing}</button>
-        <button>⛔️ {fact.votesFalse}</button>
+        <button
+          onClick={() => handleVote("votesMindblowing")}
+          disabled={isUpdating}
+        >
+          🤯 {fact.votesMindblowing}
+        </button>
+        <button onClick={() => handleVote("votesFalse")} disabled={isUpdating}>
+          ⛔️ {fact.votesFalse}
+        </button>
       </div>
     </li>
   );
