@@ -11,6 +11,10 @@ body {
   padding: 48px 64px;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .container {
   max-width: 1500px;
   margin: 0 auto;
@@ -157,7 +161,7 @@ ul {
 
 .btn-large {
   font-size: 20px;
-  padding: 20px 32px 17px;
+  padding: 20px 12px 17px;
 }
 
 .btn-all {
